@@ -1,0 +1,355 @@
+@import 'vars'
+@import 'mixins'
+
+body
+    margin: 0
+    padding: 0
+    background-color: #ffffff
+    font-family: 'Roboto Slab', serif
+    color: #555555
+
+*, *::before, *::after
+    box-sizing: border-box
+
+a
+    text-decoration: none
+
+h1, h2, h3, h4, p, ul
+    margin: 0
+    padding: 0
+
+ul
+    list-style-type: none
+
+.container
+    width: 1140px
+    margin: 0 auto
+
+.section
+    padding: 100px 0
+    background-color: #fff
+
+// header
+.header
+    width: 100%
+    height: 100vh
+    background: rgba(0,0,0,0.45)
+    position: relative
+    +flex_center
+    &_bg
+        width: 100%
+        height: 100%
+        position: absolute
+        z-index: -1
+        background: url(../img/home-bg.jpg) center no-repeat
+        background-size: cover
+
+.nav
+    position: absolute
+    width: 100%
+    top: 0
+    left: 0
+    padding: 40px 0
+    z-index: 999
+    transition: all 0.3s
+    & .container
+        +flex_between_center
+    &_logo
+        +montserrat_bold($montserrat)
+        font-size: 24px
+        color: #ffffff
+    &_navbar
+        +flex_between_center
+        & li a
+            +montserrat_reg($montserrat)
+            font-size: 14px
+            color: #ffffff
+            margin-left: 30px
+            
+.caption
+    +flex_between_center
+    flex-direction: column
+    &_title
+        +montserrat_reg($montserrat)
+        font-size: 48px
+        color: #ffffff
+        text-transform: uppercase
+    &_subtitle
+        color: #ffffff
+        font-size: 20px
+        font-weight: 400
+        margin-top: 30px
+        letter-spacing: 0.7px
+    &_btn
+        +montserrat_reg($montserrat)
+        font-size: 16px
+        color: #ffffff
+        text-transform: uppercase
+        border: 2px solid #ffffff
+        border-radius: 2px
+        padding: 20px 35px
+        margin-top: 30px
+// end header
+
+// block title
+.block-title
+    +flex_between_center
+    flex-direction: column
+    margin-bottom: 70px
+    text-align: center
+    &_title
+        +montserrat_bold($montserrat)
+        font-size: 20px
+        line-height: 24px
+        text-transform: uppercase
+    &_line
+        width: 50px
+        height: 2px
+        background-color: #555555
+        margin: 30px 0
+    &_subtitle
+        font-size: 16px
+    &_filter
+        +flex_center
+        &__list
+            +flex_between_center
+            &-item
+                margin: 0 13px
+                cursor: pointer
+                &:hover
+                    color: $main_red
+
+.filter-item-active
+    color: $main_red
+// end block title
+
+// services
+.services
+    &_items
+        +flex_between_start
+        &__item
+            +flex_start_center
+            flex-direction: column
+            flex: 1
+            cursor: pointer
+            min-height: 280px
+            padding: 10px 0
+            &:hover
+                box-shadow: 0 0 5px 1px $main_red
+            &:hover .services_items__item-icon
+                background-color: $main_red
+                color: #ffffff
+            &-icon
+                width: 90px
+                height: 90px
+                border-radius: 50%
+                border: 2px solid #dddddd
+                +flex_center
+                font-size: 42px
+                color: $main_red
+            &-title
+                +montserrat_bold($montserrat)
+                text-transform: uppercase
+                margin: 30px 0
+            &-content
+                line-height: 24px
+                text-align: center
+                padding: 0 15px
+// end services
+
+// about us
+.about
+    background-color: #f8f8f8
+    &_content
+        +flex_between_start
+        &__item
+            width: 48%
+            font-size: 14px
+            line-height: 24px
+
+    // team
+    &_team
+        +flex-between-start
+        margin-top: 60px
+        position: relative
+        &__person
+            +flex_between_center
+            flex-direction: column
+            cursor: pointer
+            &:hover .person-socials
+                display: flex
+            &-name
+                text-transform: uppercase
+                +montserrat_bold($montserrat)
+                margin: 15px 0
+            &-info
+                font-size: 13px
+            &-hero
+                width: 265px
+                height: 252px
+                position: relative
+                & img
+                    width: 100%
+                    position: absolute
+                & .person-socials
+                    position: absolute
+                    width: 100%
+                    height: 100%
+                    background: #55555550
+                    display: none
+                    justify-content: center
+                    align-items: flex-end
+                    padding-bottom: 40px
+                    &_link
+                        color: #ffffff
+                        width: 30px
+                        height: 30px
+                        +flex-center
+                        &:hover
+                            background: $main_red
+    // end team
+    // arrows
+    .arrows
+        position: absolute
+        z-index: 99
+        width: 40px
+        height: 40px
+        +flex-center
+        color: #ffffff
+        background-color: #555555
+        cursor: pointer
+        &:hover
+            background-color: $main_red
+    .arrow-left
+        left: 0
+        top: 35%
+    .arrow-right
+        right: 0
+        top: 35%
+    // end arrows
+// end about us
+
+// section portfolio
+.works
+    +flex_center
+    flex-wrap: wrap
+    & .work
+        width: 360px
+        height: 320px
+        margin: 10px
+        overflow: hidden
+        cursor: pointer
+        position: relative
+        & img
+            width: 100%
+        &:hover .work_banner
+            opacity: 1
+        &_banner
+            position: absolute
+            width: 100%
+            height: 100%
+            top: 0
+            left: 0
+            background-color: rgba(192,48,28,0.6)
+            +flex_center
+            flex-direction: column
+            opacity: 0
+            transition: opacity 0.3s
+            &__title
+                margin: 0
+                color: #fff
+                +montserrat_bold($montserrat)
+                font-size: 18px
+                text-transform: uppercase
+            &__subtitle
+                font-size: 12px
+                color: #ffffff
+                margin: 20px 0
+                &::first-letter
+                    text-transform: uppercase
+            &__link
+                padding: 12px 24px
+                background-color: #fff
+                color: $main_red
+                text-transform: uppercase
+                font-size: 14px
+
+// end section portfolio
+
+// section action parallax
+.action
+    width: 100%
+    height: 370px
+    +flex_center
+    background-color: rgba(192,48,28,0.6)
+    &_parallax
+        position: fixed
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        background: url(../img/work-bg.jpg) center no-repeat
+        background-size: cover
+        z-index: -99
+// end section action parallax
+
+// section blog posts
+
+.posts hr
+    width: 100%
+    height: 2px
+    background-color: #dddddd
+    border: none    
+    margin: 40px 0
+    
+.post
+    +flex_between_start
+    cursor: pointer
+    &:hover .post_content__header-title h5,
+    &:hover .post_content__header-title p span,
+    &:hover .post_content__link 
+        color: $main_red
+    &_img
+        flex: 1
+        & img
+            width: 100%
+    &_content
+        flex: 2
+        margin-left: 30px
+        &__header
+            +flex_start_center
+            &-date
+                +flex_center
+                flex-direction: column
+                width: 80px
+                height: 80px
+                border: 2px solid #555555
+                & span
+                    +montserrat_bold($montserrat)
+                    font-size: 18px
+                & span:nth-child(1)
+                    font-size: 24px
+            &-title
+                margin-left: 30px
+                & h5
+                    margin: 0
+                    margin-bottom: 15px
+                    +montserrat_bold($montserrat)
+                    font-size: 18px
+                    text-transform: uppercase
+                & p
+                    font-size: 14px
+                    font-style: italic
+        &__text
+            font-size: 14px
+            line-height: 26px
+            margin-top: 20px
+        &__link
+            +montserrat_bold($montserrat)
+            text-transform: uppercase
+            font-size: 14px
+            color: #555555
+            margin-top: 20px
+            display: block
+
+// end section blog posts
